@@ -2,7 +2,7 @@ package jeu
 
 class TirageDes(val nbDe:Int, val maxDe:Int) {
 
-    fun lance():Int{
+    fun lance(): Int {
         // Si on lance 3d8
         // nbDe = 3 correspond au nombre de dés que l'on souhaite lancer
         // maxDe = 8 correspond au nombre de face du dé et aussi a la valeur maximum du dé

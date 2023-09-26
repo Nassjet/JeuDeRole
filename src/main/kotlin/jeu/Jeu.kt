@@ -41,12 +41,55 @@ class Jeu(monstres: List<Personnage>) {
      *
      */
     fun creerPersonnage(): Personnage {
-        println("Création votre personnage:")
-        // TODO Mission 1.1
-        val hero = Personnage("YYY",150,150,12,8,8,12)
-        this.joueur= hero
+        println("Création de votre personnage:")
+
+        // Demander le nom du personnage à l'utilisateur
+        print("Entrez le nom de votre personnage: ")
+        val nom = readLine() ?: ""
+
+        var attaque = 0
+        var defense = 0
+        var endurance = 0
+        var vitesse = 0
+
+        // Demander à l'utilisateur de répartir 40 points entre attaque, défense, endurance et vitesse
+        var pointsRestants = 40
+        while (pointsRestants > 0) {
+            println("Points restants: $pointsRestants")
+            print("Attribuez des points à l'attaque: ")
+            val pointsAttaque = readLine()?.toIntOrNull() ?: 0
+            print("Attribuez des points à la défense: ")
+            val pointsDefense = readLine()?.toIntOrNull() ?: 0
+            print("Attribuez des points à l'endurance: ")
+            val pointsEndurance = readLine()?.toIntOrNull() ?: 0
+            print("Attribuez des points à la vitesse: ")
+            val pointsVitesse = readLine()?.toIntOrNull() ?: 0
+
+            val totalPoints = pointsAttaque + pointsDefense + pointsEndurance + pointsVitesse
+
+            if (totalPoints > pointsRestants) {
+                println("Vous avez attribué trop de points. Réattribuez les points.")
+            } else {
+                attaque = pointsAttaque
+                defense = pointsDefense
+                endurance = pointsEndurance
+                vitesse = pointsVitesse
+                pointsRestants -= totalPoints
+                break
+            }
+        }
+
+        // Calculer les points de vie maximum en fonction de l'endurance
+        val pointsDeVieMax = endurance * 10
+
+        // Créer le personnage avec les valeurs saisies par l'utilisateur
+        val hero = Personnage(nom, pointsDeVieMax, pointsDeVieMax, attaque, defense, endurance, vitesse)
+
+        // Valoriser l'attribut joueur avec le personnage créé et le retourner
+        this.joueur = hero
         return hero
     }
+
     
 
 }

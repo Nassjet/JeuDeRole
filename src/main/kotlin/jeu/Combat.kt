@@ -10,18 +10,44 @@ class Combat(
 
     // Méthode pour simuler un tour de combat du joueur
     fun tourDeJoueur() {
+
         println("\u001B[34m ---Tour de ${this.jeu.joueur.nom} (pv: ${this.jeu.joueur.pointDeVie}) ---")
-       //TODO Mission 1.2
-        this.jeu.joueur.attaque(monstre)
+
+        println("choissiez une action :")
+        val choix = readln().toInt() //saisir une valeur disponible
+
+        when (choix) {
+            0 -> {
+                "attaquer"
+                this.jeu.joueur.attaque(monstre)
+                //lorsque la valeur est 0 l'action est attaquer
+            }
+            1 ->{
+                "passer"
+                this.jeu.joueur.passer(monstre)
+
+                //l'action sera "defense"
+            }
+            // ajoutez d'autres actions
+            else -> "action invalide" //si une valeur ne fait pas parti des actions un message d'erreur sera affiché
+        }
+
+
         println("\u001b[0m")
     }
 
     // Méthode pour simuler un tour de combat du monstre
     fun tourDeMonstre() {
         println("\u001B[31m---Tour de ${monstre.nom} (pv: ${monstre.pointDeVie}) ---")
-        //TODO Mission 1.3
-        this.monstre.attaque(this.jeu.joueur)
-        println("\u001b[0m")
+        //choix d'action pour le monstre
+        if (TirageDes(1,100).lance() < 70) {
+            println("${monstre.nom} decide de d'attaquer")
+            this.monstre.attaque(this.jeu.joueur)  }
+        else{
+                println("${monstre.nom} decide de passer son tour")
+            }
+   println("\u001b[0m")
+
     }
 
     // Méthode pour exécuter le combat complet
