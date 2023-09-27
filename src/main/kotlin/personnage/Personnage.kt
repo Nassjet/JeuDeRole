@@ -5,7 +5,6 @@ package personnage
     var pointDeVie: Int,
     val pointDeVieMax: Int,
     var attaque: Int,
-    var passer: Int,
     var defense: Int,
     var endurance: Int,
     var vitesse: Int,
@@ -30,7 +29,7 @@ package personnage
 
         }
 
-     }
+
 
 
     override fun toString(): String {
