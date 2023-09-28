@@ -1,17 +1,21 @@
 package personnage
 
+import jdk.jfr.Description
+
 
 class Armure (
-     private val nom : String,
-     private val descripton: String,
+      val nom : String,
+      val description: String,
     val type:TypeArmure,
     val qualite:Qualite,
     ){
 
-    fun calculProtection():Int {
-        val x = this.qualite.bonusQualite + this.type.BonusType
-        return x
+    fun calculProtection(): Int {
+        val protection= this.qualite.bonusQualite + this.type.BonusType // variable à potentiel changement
+        println(protection)
+        return protection
     }
+
 
     fun utiliser(cible: Personnage) {
         println("$nom est utilisée contre ${cible.nom}.")

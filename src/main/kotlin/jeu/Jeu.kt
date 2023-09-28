@@ -1,7 +1,8 @@
 package jeu
 
+import personnage.Guandao
 import personnage.Personnage
-
+import personnage.typeExtraLegendaire
 
 
 class Jeu(monstres: List<Personnage>) {
@@ -54,8 +55,11 @@ class Jeu(monstres: List<Personnage>) {
 
         // Demander à l'utilisateur de répartir 40 points entre attaque, défense, endurance et vitesse
         var pointsRestants = 40
-        while (pointsRestants > 0) {
-            println("Points restants: $pointsRestants")
+        while (pointsRestants >= 40) {
+
+            println("Points restants: $pointsRestants") //affichage des points restants
+
+            //attribution des points
             print("Attribuez des points à l'attaque: ")
             val pointsAttaque = readLine()?.toIntOrNull() ?: 0
             print("Attribuez des points à la défense: ")
@@ -65,17 +69,16 @@ class Jeu(monstres: List<Personnage>) {
             print("Attribuez des points à la vitesse: ")
             val pointsVitesse = readLine()?.toIntOrNull() ?: 0
 
-            val totalPoints = pointsAttaque + pointsDefense + pointsEndurance + pointsVitesse
+             pointsRestants = pointsAttaque + pointsDefense + pointsEndurance + pointsVitesse
 
-            if (totalPoints > pointsRestants) {
+            if (pointsRestants>40) {
                 println("Vous avez attribué trop de points. Réattribuez les points.")
             } else {
                 attaque = pointsAttaque
                 defense = pointsDefense
                 endurance = pointsEndurance
                 vitesse = pointsVitesse
-                pointsRestants -= totalPoints
-                break
+
             }
         }
 
@@ -83,7 +86,7 @@ class Jeu(monstres: List<Personnage>) {
         val pointsDeVieMax = endurance * 10
 
         // Créer le personnage avec les valeurs saisies par l'utilisateur
-        val hero = Personnage(nom, pointsDeVieMax, pointsDeVieMax, attaque, defense, endurance, vitesse)
+        val hero = Personnage(nom, pointsDeVieMax, pointsDeVieMax, attaque, defense, endurance, vitesse, armePrincipal = null, armure = null )
 
         // Valoriser l'attribut joueur avec le personnage créé et le retourner
         this.joueur = hero

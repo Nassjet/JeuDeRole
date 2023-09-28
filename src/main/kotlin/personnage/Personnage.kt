@@ -8,6 +8,8 @@ package personnage
     var defense: Int,
     var endurance: Int,
     var vitesse: Int,
+    var armePrincipal: Arme?,
+    var armure: Armure?,
 ) {
 
      fun calculeDefense():Int{
