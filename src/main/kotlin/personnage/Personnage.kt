@@ -1,5 +1,7 @@
 package personnage
 
+import item.Item
+
  class Personnage(
     val nom: String,
     var pointDeVie: Int,
@@ -10,6 +12,7 @@ package personnage
     var vitesse: Int,
     var armePrincipal: Arme?,
     var armure: Armure?,
+    val inventaire: MutableList<Item> = mutableListOf()
 ) {
 
      fun calculeDefense():Int{
