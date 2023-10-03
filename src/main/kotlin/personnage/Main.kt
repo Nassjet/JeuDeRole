@@ -27,7 +27,7 @@ val typeExtraLegendaire=TypeArmure(nom= "Berbèrie", BonusType = 216)
 //instanciation des armes
 val EpeeLongue = TypeArme(10,2,2.0,3)
 
-fun main(args: Array<String>){
+fun main(){
 
 //Instantation des armes
     val  main = Arme(

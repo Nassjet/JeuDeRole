@@ -1,6 +1,6 @@
 package jeu
 
-import personnage.Guandao
+
 import personnage.Personnage
 import personnage.typeExtraLegendaire
 
@@ -42,7 +42,7 @@ class Jeu(monstres: List<Personnage>) {
      *
      */
     fun creerPersonnage(): Personnage {
-        println("Création de votre personnage:")
+        println("Création de votre personnage")
 
         // Demander le nom du personnage à l'utilisateur
         print("Entrez le nom de votre personnage: ")
@@ -52,35 +52,96 @@ class Jeu(monstres: List<Personnage>) {
         var defense = 0
         var endurance = 0
         var vitesse = 0
+        var choix =0
+        var stats = 0
+
 
         // Demander à l'utilisateur de répartir 40 points entre attaque, défense, endurance et vitesse
         var pointsRestants = 40
-        while (pointsRestants >= 40) {
+        println("Vous avez 40 points à répartir entre l'attaque,la défense, la vitesse, l'endurance")
+        println("Saissisez le chiffre adéquat pour répartir les points là où vous le souhaitez.")
+        println("1. Attaque")
+        println("2. Défense")
+        println("3. Endurance")
+        println("4. Vitesse")
+        println("5. Terminé")
 
-            println("Points restants: $pointsRestants") //affichage des points restants
 
-            //attribution des points
-            print("Attribuez des points à l'attaque: ")
-            val pointsAttaque = readLine()?.toIntOrNull() ?: 0
-            print("Attribuez des points à la défense: ")
-            val pointsDefense = readLine()?.toIntOrNull() ?: 0
-            print("Attribuez des points à l'endurance: ")
-            val pointsEndurance = readLine()?.toIntOrNull() ?: 0
-            print("Attribuez des points à la vitesse: ")
-            val pointsVitesse = readLine()?.toIntOrNull() ?: 0
-
-             pointsRestants = pointsAttaque + pointsDefense + pointsEndurance + pointsVitesse
-
-            if (pointsRestants>40) {
-                println("Vous avez attribué trop de points. Réattribuez les points.")
-            } else {
-                attaque = pointsAttaque
-                defense = pointsDefense
-                endurance = pointsEndurance
-                vitesse = pointsVitesse
-
+        choix = readln().toInt()
+        do {
+            while (choix > 5){ // vérifie que l'utilisateur n'a pas saisi une valeure supérieure à 5 sinon il le refait saisir.
+                println("Vous avez saisi un nombre trop grand." +
+                        "Resaissisez le nombre de points à affecter pour l'attaque:")
+                choix = readln().toInt()
             }
-        }
+            if (choix == 1) { //
+                println("stats:attaque")
+                stats = readln().toInt()
+                while (stats > pointsRestants){
+                    println("Vous avez saisi trop de points." +
+                            "Resaissisez le nombre de points à affecter pour l'attaque")
+                    stats = readln().toInt()
+                }
+                attaque += stats
+                pointsRestants -= stats
+                println("Avez-vous terminer ? " +
+                        "Saissisez 5 si oui," +
+                        "sinon saissisez une valeur entre 1 et 4 pour continuer." +
+                        "Il vous reste $pointsRestants points")
+                choix= readln().toInt()
+            }
+
+            if (choix == 2) {
+                println("stats:défense")
+                stats = readln().toInt()
+                while (stats > pointsRestants){
+                    println("Vous avez saisi trop de points." +
+                            "Resaissisez le nombre de points à affecter pour la défense:")
+                    stats = readln().toInt()
+                }
+                defense += stats
+                pointsRestants -= stats
+                println("Avez-vous terminer ?" +
+                        " Saissisez 5 si oui," +
+                        " sinon saissisez une valeur entre 1 et 4 pour continuer." +
+                        " Il vous reste $pointsRestants points")
+                choix= readln().toInt()
+            }
+            if (choix == 3) {
+                println("stats:Endurance")
+                stats = readln().toInt()
+                while (stats> pointsRestants){
+                    println("Vous avez saisi trop de points." +
+                            "Resaissisez le nombre de points à affecter pour l'endurance:")
+                    stats = readln().toInt()
+                }
+                endurance += stats
+                pointsRestants -= stats
+                println("Avez-vous terminer ?" +
+                        " Saissisez 5 si oui," +
+                        " sinon saissisez une valeur entre 1 et 4 pour continuer." +
+                        " Il vous reste $pointsRestants points")
+                choix= readln().toInt()
+            }
+
+            if (choix == 4) {
+                println("stats:vitesse")
+                stats = readln().toInt()
+                while (stats > pointsRestants){
+                    println("Vous avez saisi trop de points." +
+                            "Resaissisez le nombre de points à affecter pour la vitesse:")
+                    stats = readln().toInt()
+                }
+                vitesse += stats
+                pointsRestants -= stats
+                println("Avez-vous terminer ?" +
+                        "Saissisez 5 si oui," +
+                        "sinon saissisez une valeur entre 1 et 4 pour continuer." +
+                        "Il vous reste $pointsRestants points")
+                choix= readln().toInt()
+            }
+        } while (choix == 5 || pointsRestants  == 0)
+
 
         // Calculer les points de vie maximum en fonction de l'endurance
         val pointsDeVieMax = endurance * 10

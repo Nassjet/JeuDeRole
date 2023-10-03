@@ -1,9 +1,14 @@
 package personnage
 
+import item.Item
 import jeu.TirageDes
 
 
-class Arme(val nom: String, val description: String, val type: TypeArme, val qualité: Qualite, val degats: Int){
+class Arme(nom: String,
+           description: String, // suppression de val car attribut importer de la classe Item
+           val type: TypeArme,
+           val qualité: Qualite,
+           val degats: Int):Item(nom,description)   {
 
     fun calculerDegats(): Int {
 
@@ -21,5 +26,8 @@ class Arme(val nom: String, val description: String, val type: TypeArme, val qua
         }
 
         return degats
+    }
+    override fun utiliser(cible: Personnage) {
+        //cible.equipe(this)
     }
 }
