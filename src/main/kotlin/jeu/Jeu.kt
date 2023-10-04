@@ -74,6 +74,7 @@ class Jeu(monstres: List<Personnage>) {
                         "Resaissisez le nombre de points à affecter pour l'attaque:")
                 choix = readln().toInt()
             }
+
             if (choix == 1) { //
                 println("stats:attaque")
                 stats = readln().toInt()
@@ -82,7 +83,7 @@ class Jeu(monstres: List<Personnage>) {
                             "Resaissisez le nombre de points à affecter pour l'attaque")
                     stats = readln().toInt()
                 }
-                attaque += stats
+                attaque = stats
                 pointsRestants -= stats
                 println("Avez-vous terminer ? " +
                         "Saissisez 5 si oui," +
@@ -91,7 +92,7 @@ class Jeu(monstres: List<Personnage>) {
                 choix= readln().toInt()
             }
 
-            if (choix == 2) {
+            else if (choix == 2) {
                 println("stats:défense")
                 stats = readln().toInt()
                 while (stats > pointsRestants){
@@ -107,7 +108,7 @@ class Jeu(monstres: List<Personnage>) {
                         " Il vous reste $pointsRestants points")
                 choix= readln().toInt()
             }
-            if (choix == 3) {
+            else if (choix == 3) {
                 println("stats:Endurance")
                 stats = readln().toInt()
                 while (stats> pointsRestants){
@@ -124,7 +125,7 @@ class Jeu(monstres: List<Personnage>) {
                 choix= readln().toInt()
             }
 
-            if (choix == 4) {
+            else if (choix == 4) {
                 println("stats:vitesse")
                 stats = readln().toInt()
                 while (stats > pointsRestants){
@@ -140,14 +141,15 @@ class Jeu(monstres: List<Personnage>) {
                         "Il vous reste $pointsRestants points")
                 choix= readln().toInt()
             }
-        } while (choix == 5 || pointsRestants  == 0)
+            pointsRestants=40-(attaque+defense+vitesse+endurance)
+        } while (choix != 5 || pointsRestants  > 0)
 
 
         // Calculer les points de vie maximum en fonction de l'endurance
-        val pointsDeVieMax = endurance * 10
+        val pointsDeVieMax =50+ endurance * 10
 
         // Créer le personnage avec les valeurs saisies par l'utilisateur
-        val hero = Personnage(nom, pointsDeVieMax, pointsDeVieMax, attaque, defense, endurance, vitesse, armePrincipal = null, armure = null )
+        val hero = Personnage(nom, pointsDeVieMax, pointsDeVieMax, attaque, defense, endurance, vitesse, armePrincipal = null, armure = null, inventaire = mutableListOf())
 
         // Valoriser l'attribut joueur avec le personnage créé et le retourner
         this.joueur = hero

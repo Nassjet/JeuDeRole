@@ -132,6 +132,7 @@ fun main(){
         vitesse = 11 ,
         armePrincipal = null,
         armure = null,
+        inventaire = mutableListOf()
     )
 
     val jnoun = Personnage( //monstre de madame
@@ -157,6 +158,7 @@ fun main(){
         vitesse = 10,
         armePrincipal = null,
         armure = null,
+        inventaire = mutableListOf(),
     )
 
     val Maman = Personnage(
