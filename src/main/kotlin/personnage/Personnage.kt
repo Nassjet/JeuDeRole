@@ -14,7 +14,7 @@ class Personnage(
     var vitesse: Int,
     var armePrincipal: Arme?,
     var armure: Armure?,
-    val inventaire: MutableList<Item> = mutableListOf()
+    val inventaire: MutableList<Item> = mutableListOf(),
 ) {
 
      fun avoirPotion(): Boolean{
@@ -49,8 +49,27 @@ class Personnage(
     }
      fun calculeDefense():Int{
          //TODO Mission 4.2
-        return this.defense/2;
+         var result=this.defense/2;
+         if (armure!=null){
+            result+ this.armure!!.calculProtection()
+         }
+        return result;
      }
+
+     fun equipe(armureA :Armure) {
+
+         if (armureA in this.inventaire)
+             this.armure = armureA
+         println("$nom équipe ${armureA.nom}" )
+
+
+     }
+
+     fun equipe(arme:Arme){
+
+     }
+
+
 
      // Méthode pour attaquer un adversaire
      fun attaque(adversaire: Personnage) {

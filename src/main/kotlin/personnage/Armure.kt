@@ -1,14 +1,15 @@
 package personnage
 
+import item.Item
 import jdk.jfr.Description
 
 
 class Armure (
-      val nom : String,
-      val description: String,
+       nom : String,
+       description: String,
     val type:TypeArmure,
     val qualite:Qualite,
-    ){
+    ) : Item(nom, description){
 
     fun calculProtection(): Int {
         val protection= this.qualite.bonusQualite + this.type.BonusType // variable à potentiel changement
@@ -17,7 +18,7 @@ class Armure (
     }
 
 
-    fun utiliser(cible: Personnage) {
+    override fun utiliser(cible: Personnage) {
         println("$nom est utilisée contre ${cible.nom}.")
         // Ici, nous n'avons pas besoin de renvoyer de résultat, nous avons simplement effectué une action.
     }
