@@ -11,7 +11,7 @@ class BombeTest {
     @Test
     fun utiliser(personnage: Personnage) {
         val bombeTest = Bombe(nom = "" , description = "", nombreDeDes = 3, maxDe = 8)
-        val jnoun = Personnage( //monstre de madame
+        val jnoun = Personnage(
             "DjJnoun",
             pointDeVie = 20,
             pointDeVieMax = 216,
