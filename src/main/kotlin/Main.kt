@@ -1,8 +1,6 @@
-package personnage
-
-import item.Bombe
-import item.Potion
+import item.*
 import jeu.Jeu
+import personnage.Personnage
 
 //instanciation des qualités des objets
 val qualiteCommun = Qualite("commun", 0, "\u001B[32m")
@@ -13,16 +11,16 @@ val qualiteLegendaire = Qualite("legendaire", 3, "\u001B[33m")
 
 //Intantation des types d'armes
 val EpeeLongue = TypeArme(10,2,2.0,3)
-val Lance=TypeArme(1,30,1.5, 4)
-val Corps=TypeArme(1,10, 0.3,1)
-val epée=TypeArme(1,15,0.5,3)
+val Lance= TypeArme(1,30,1.5, 4)
+val Corps= TypeArme(1,10, 0.3,1)
+val epée= TypeArme(1,15,0.5,3)
 
 
 //Intantation des types d'armures
-val leger=TypeArmure(nom = "Léger", BonusType = 2)
-val cuir=TypeArmure(nom = "Cuir", BonusType = 2)
-val coteDemaille=TypeArmure(nom = "Cote de Maille", BonusType = 6)
-val typeExtraLegendaire=TypeArmure(nom= "Berbèrie", BonusType = 216)
+val leger= TypeArmure(nom = "Léger", BonusType = 2)
+val cuir= TypeArmure(nom = "Cuir", BonusType = 2)
+val coteDemaille= TypeArmure(nom = "Cote de Maille", BonusType = 6)
+val typeExtraLegendaire= TypeArmure(nom= "Berbèrie", BonusType = 216)
 
 
 
@@ -62,7 +60,7 @@ fun main(){
     )
 
     val claquette = Arme(
-        nom = "Babouche",
+        nom = "Babouche traditionnelle",
         description = "Fonction 1 : Arme de destruction massive , Fonction 2 : Claquette ",
         type = Corps,
         qualité = qualiteRare,

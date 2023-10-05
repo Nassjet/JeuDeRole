@@ -1,6 +1,10 @@
 package jeu
 
+import item.Arme
+import item.Bombe
+import item.Potion
 import personnage.Personnage
+import item.Item
 
 class Combat(
     val jeu :Jeu,
@@ -35,10 +39,27 @@ class Combat(
             3 ->{
                 "boire potion"
                 this.jeu.joueur.boirePotion()
-                
+
             //l'action sera "boire une potion"
             }
+            4 ->{
+                "ouvrir inventaire"
+
+                this.jeu.joueur.afficherInventaire()
+                println("Selectionnez un item")
+                val selection:Int = readln().toInt()
+                val objet= this.jeu.joueur.inventaire[selection]
+                if (objet is Bombe){
+                    objet.utiliser(monstre)
+                }
+                else{
+                    objet.utiliser(this.jeu.joueur)
+                }
+
+
+            }
             else -> "action invalide" //si une valeur ne fait pas parti des actions un message d'erreur sera affiché
+
         }
 
 
@@ -49,13 +70,18 @@ class Combat(
     fun tourDeMonstre() {
         println("\u001B[31m---Tour de ${monstre.nom} (pv: ${monstre.pointDeVie}) ---")
         //choix d'action pour le monstre
-        if (TirageDes(1,100).lance() < 70) {
+        val num = TirageDes(1,100).lance()
+        if (num< 70) {
             println("${monstre.nom} decide de d'attaquer")
             this.monstre.attaque(this.jeu.joueur)  }
-
+        else if(this.monstre.avoirPotion() && this.monstre.pointDeVie < this.monstre.pointDeVieMax / 2 && num <=80) {
+                this.monstre.boirePotion()
+             }
         else{
                 println("${monstre.nom} decide de passer son tour")
             }
+
+
 
    println("\u001b[0m")
 

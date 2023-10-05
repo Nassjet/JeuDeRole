@@ -1,7 +1,7 @@
-package personnage
+package item
 
-import item.Item
 import jeu.TirageDes
+import personnage.Personnage
 
 
 class Arme(nom: String,
@@ -28,6 +28,6 @@ class Arme(nom: String,
         return degats
     }
     override fun utiliser(cible: Personnage) {
-        //cible.equipe(this)
+        cible.equipeArme(this)
     }
 }

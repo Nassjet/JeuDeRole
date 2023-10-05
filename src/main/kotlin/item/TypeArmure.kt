@@ -1,4 +1,4 @@
-package personnage
+package item
 
 class TypeArmure (
     val nom:String,

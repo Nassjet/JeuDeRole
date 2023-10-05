@@ -2,7 +2,7 @@ package jeu
 
 
 import personnage.Personnage
-import personnage.typeExtraLegendaire
+
 
 
 class Jeu(monstres: List<Personnage>) {
@@ -69,7 +69,7 @@ class Jeu(monstres: List<Personnage>) {
 
         choix = readln().toInt()
         do {
-            while (choix > 5){ // vérifie que l'utilisateur n'a pas saisi une valeure supérieure à 5 sinon il le refait saisir.
+            while (choix > 6){ // vérifie que l'utilisateur n'a pas saisi une valeure supérieure à 6 sinon il le refait saisir.
                 println("Vous avez saisi un nombre trop grand." +
                         "Resaissisez le nombre de points à affecter pour l'attaque:")
                 choix = readln().toInt()
@@ -86,7 +86,7 @@ class Jeu(monstres: List<Personnage>) {
                 attaque = stats
                 pointsRestants -= stats
                 println("Avez-vous terminer ? " +
-                        "Saissisez 5 si oui," +
+                        "Saissisez 6 si oui," +
                         "sinon saissisez une valeur entre 1 et 4 pour continuer." +
                         "Il vous reste $pointsRestants points")
                 choix= readln().toInt()
@@ -103,7 +103,7 @@ class Jeu(monstres: List<Personnage>) {
                 defense += stats
                 pointsRestants -= stats
                 println("Avez-vous terminer ?" +
-                        " Saissisez 5 si oui," +
+                        " Saissisez 6 si oui," +
                         " sinon saissisez une valeur entre 1 et 4 pour continuer." +
                         " Il vous reste $pointsRestants points")
                 choix= readln().toInt()
@@ -119,7 +119,7 @@ class Jeu(monstres: List<Personnage>) {
                 endurance += stats
                 pointsRestants -= stats
                 println("Avez-vous terminer ?" +
-                        " Saissisez 5 si oui," +
+                        " Saissisez 6 si oui," +
                         " sinon saissisez une valeur entre 1 et 4 pour continuer." +
                         " Il vous reste $pointsRestants points")
                 choix= readln().toInt()
@@ -136,10 +136,13 @@ class Jeu(monstres: List<Personnage>) {
                 vitesse += stats
                 pointsRestants -= stats
                 println("Avez-vous terminer ?" +
-                        "Saissisez 5 si oui," +
+                        "Saissisez 6 si oui," +
                         "sinon saissisez une valeur entre 1 et 4 pour continuer." +
                         "Il vous reste $pointsRestants points")
                 choix= readln().toInt()
+            }
+            else if (choix == 5){
+                this.joueur.afficherInventaire()
             }
             pointsRestants=40-(attaque+defense+vitesse+endurance)
         } while (choix != 5 || pointsRestants  > 0)

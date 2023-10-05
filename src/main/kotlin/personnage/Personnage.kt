@@ -1,11 +1,12 @@
 package personnage
 
+import item.Armure
 import item.Bombe
 import item.Item
 import item.Potion
-import personnage.Arme
+import item.Arme
 
-class Personnage(
+open class Personnage(
     val nom: String,
     var pointDeVie: Int,
     val pointDeVieMax: Int,
@@ -54,8 +55,8 @@ class Personnage(
             }
 
 
-            pointDeVie += iPremierePotion
-            if (pointDeVie > pointDeVieMax) {
+            pointDeVie += iPremierePotion  //calcule point de vie + potion
+            if (pointDeVie > pointDeVieMax) {  //
                 this.pointDeVie = pointDeVieMax
 
             }
@@ -74,7 +75,7 @@ class Personnage(
         return result;
      }
 
-     fun equipeArmure(armureA :Armure) {
+     fun equipeArmure(armureA : Armure) {
 
          if (armureA in this.inventaire && armureA is Armure)
              this.armure = armureA
@@ -82,7 +83,7 @@ class Personnage(
 
 
      }
-     fun equipeArme(armeA:Arme){
+     fun equipeArme(armeA: Arme){
         if (armeA in this.inventaire && armeA is Arme)
             this.armePrincipal = armeA
          println("$nom équipe ${armeA.nom}")
@@ -131,6 +132,7 @@ class Personnage(
             armure==null
             this.inventaire.addAll(adversaire.inventaire)
             adversaire.inventaire= mutableListOf()
+
         }
     }
 

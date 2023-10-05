@@ -1,14 +1,13 @@
-package personnage
+package item
 
-import item.Item
-import jdk.jfr.Description
+import personnage.Personnage
 
 
 class Armure (
-       nom : String,
-       description: String,
-    val type:TypeArmure,
-    val qualite:Qualite,
+    nom : String,
+    description: String,
+    val type: TypeArmure,
+    val qualite: Qualite,
     ) : Item(nom, description){
 
     fun calculProtection(): Int {

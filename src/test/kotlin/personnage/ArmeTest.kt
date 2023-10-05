@@ -1,9 +1,12 @@
 package personnage
 
+import item.Arme
+import item.TypeArme
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions
 
 import org.junit.jupiter.api.Assertions.*
+import qualiteRare
 
 class ArmeTest {
 
