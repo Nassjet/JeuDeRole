@@ -4,8 +4,10 @@ import personnage.Personnage
 
 class Combat(
     val jeu :Jeu,
-    val monstre: Personnage
-) {
+    val monstre: Personnage,
+)
+
+{
     var nombreTours: Int = 1
 
     // Méthode pour simuler un tour de combat du joueur
@@ -29,6 +31,13 @@ class Combat(
                 //l'action sera "defense"
             }
             // ajoutez d'autres actions
+
+            3 ->{
+                "boire potion"
+                this.jeu.joueur.boirePotion()
+                
+            //l'action sera "boire une potion"
+            }
             else -> "action invalide" //si une valeur ne fait pas parti des actions un message d'erreur sera affiché
         }
 
@@ -43,9 +52,11 @@ class Combat(
         if (TirageDes(1,100).lance() < 70) {
             println("${monstre.nom} decide de d'attaquer")
             this.monstre.attaque(this.jeu.joueur)  }
+
         else{
                 println("${monstre.nom} decide de passer son tour")
             }
+
    println("\u001b[0m")
 
     }

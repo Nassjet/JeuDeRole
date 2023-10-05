@@ -3,6 +3,7 @@ package personnage
 import item.Bombe
 import item.Item
 import item.Potion
+import personnage.Arme
 
 class Personnage(
     val nom: String,
@@ -14,12 +15,13 @@ class Personnage(
     var vitesse: Int,
     var armePrincipal: Arme?,
     var armure: Armure?,
-    val inventaire: MutableList<Item> = mutableListOf(),
-) {
+    var inventaire: MutableList<Item> = mutableListOf(),
+
+    ) {
 
      fun avoirPotion(): Boolean{
-         for (elt in this.inventaire) {
-             if (elt is Potion) {
+         for (element in this.inventaire) { // si il y a une potion on retourne vrai sinon faux
+             if (element is Potion) {
                  return true
              }
          }
@@ -27,25 +29,41 @@ class Personnage(
      }
 
     fun avoirbombe(): Boolean{
-        for (elt in this.inventaire) {
-            if (elt is Bombe) {
+        for (element in this.inventaire) { // si il y a une bombe on retourne vrai sinon faux
+            if (element is Bombe) {
                 return true
             }
         }
         return false
     }
 
-    fun boirePotion(){
-        if (avoirPotion() == true){
+    fun boirePotion() {
+        if (avoirPotion() == true) {
             var iPremierePotion = -1
-            for (i in 0..this.inventaire.lastIndex) {
-                if (this.inventaire[i] is Potion) {
-                    iPremierePotion = i
+            for (i in 0..this.inventaire.lastIndex) { //parcours l'inventaire pour recuperer un item
+
+                if (this.inventaire[i] is Potion) { // verifie si l'item est une potion
+
+                    val potion: Potion = this.inventaire[i] as Potion
+                    iPremierePotion = potion.soin
+
+                    this.inventaire.remove(potion)
                     break
+
                 }
             }
-            
+
+
+            pointDeVie += iPremierePotion
+            if (pointDeVie > pointDeVieMax) {
+                this.pointDeVie = pointDeVieMax
+
+            }
+
+            println("Vous avez $iPremierePotion de point de santé avec cette potion.")
+
         }
+
     }
      fun calculeDefense():Int{
          //TODO Mission 4.2
@@ -56,34 +74,65 @@ class Personnage(
         return result;
      }
 
-     fun equipe(armureA :Armure) {
+     fun equipeArmure(armureA :Armure) {
 
-         if (armureA in this.inventaire)
+         if (armureA in this.inventaire && armureA is Armure)
              this.armure = armureA
          println("$nom équipe ${armureA.nom}" )
 
 
      }
-
-     fun equipe(arme:Arme){
-
+     fun equipeArme(armeA:Arme){
+        if (armeA in this.inventaire && armeA is Arme)
+            this.armePrincipal = armeA
+         println("$nom équipe ${armeA.nom}")
      }
 
 
 
      // Méthode pour attaquer un adversaire
      fun attaque(adversaire: Personnage) {
-        //TODO Mission 4.1
-       val degats= this.attaque/2
-         adversaire.pointDeVie-=degats
-        println("$nom attaque ${adversaire.nom} avec une attaque de base et inflige $degats points de dégâts.")
-    }
+         //TODO Mission 4.1
+         if (armePrincipal != null) { //Si une arme est équipée, on additionne ses dégats aux dégats totaux.
+             var degats = this.armePrincipal!!.calculerDegats()+(this.attaque / 2)
+             degats-=adversaire.calculeDefense()
+             if(degats<=0) {
+                 degats = 1
+             }
+             adversaire.pointDeVie -= degats
+             println("$nom attaque ${adversaire.nom} avec son arme ${armePrincipal} et inflige $degats points de dégâts.")
+         }
+         else{ //Si une arme n'est pas équipée alors un 1 point de dégats sera ingligée
+             var degats = this.attaque/2
+             degats-=adversaire.calculeDefense()
+             if(degats<=0) {
+                 degats = 1
+             }
+             println("$nom attaque ${adversaire.nom} avec une attaque de base et inflige $degats points de dégâts.")
+         }
+     }
     // Méthode pour passer le tour
      fun passer (adversaire: Personnage) {
 
          println("${this.nom} passe son tour")
 
         }
+
+    fun afficherInventaire(){
+        println("Inventaire de $nom")
+        for (i in 1 until this.inventaire.size){
+            println("$i.${this.inventaire[i]}")
+        }
+    }
+
+    fun loot(adversaire: Personnage){
+        if (adversaire.pointDeVie<=0){
+            armePrincipal== null
+            armure==null
+            this.inventaire.addAll(adversaire.inventaire)
+            adversaire.inventaire= mutableListOf()
+        }
+    }
 
 
 
