@@ -28,6 +28,6 @@ class Arme(nom: String,
         return degats
     }
     override fun utiliser(cible: Personnage) {
-        cible.equipeArme(this)
+        cible.equipe(this)
     }
 }

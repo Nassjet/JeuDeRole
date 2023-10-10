@@ -5,22 +5,22 @@ import personnage.Personnage
 //instanciation des qualités des objets
 val qualiteCommun = Qualite("commun", 0, "\u001B[32m")
 val qualiteRare = Qualite("rare", 1, couleur = "\u001B[34m")
-val qualiteEpic = Qualite("epic", 2, "\u001B[35m")
-val qualiteLegendaire = Qualite("legendaire", 3, "\u001B[33m")
+val qualiteEpic = Qualite("epic", 3, "\u001B[35m")
+val qualiteLegendaire = Qualite("legendaire", 4, "\u001B[33m")
 
 
 //Intantation des types d'armes
-val EpeeLongue = TypeArme(10,2,2.0,3)
-val Lance= TypeArme(1,30,1.5, 4)
-val Corps= TypeArme(1,10, 0.3,1)
-val epée= TypeArme(1,15,0.5,3)
+val EpeeLongue = TypeArme(1,8,2.0,19)
+val Lance= TypeArme(1,8,3.0, 20)
+val Corps= TypeArme(1,4, 2.0,18)
+val dague= TypeArme(1,4,3.0,18)
 
 
 //Intantation des types d'armures
 val leger= TypeArmure(nom = "Léger", BonusType = 2)
 val cuir= TypeArmure(nom = "Cuir", BonusType = 2)
-val coteDemaille= TypeArmure(nom = "Cote de Maille", BonusType = 6)
-val typeExtraLegendaire= TypeArmure(nom= "Berbèrie", BonusType = 216)
+val coteDemaille= TypeArmure(nom = "Cote de Maille", BonusType = 5)
+val typeExtraLegendaire= TypeArmure(nom= "Berbèrie", BonusType = 6)
 
 
 
@@ -38,9 +38,9 @@ fun main(){
         degats = 2)
 
     val  dague = Arme(
-        nom = "Tes propres main",
-        description = "Tu connais l'expression on fait avec ce que l'on a sous la main... bah t'as rien lol ratio",
-        type = epée,
+        nom = "Double Dague",
+        description = "Comme Bonnie&Clyde, ils sont unis dans la mort",
+        type = dague,
         qualité = qualiteEpic,
         degats = 7*2)
 
@@ -100,7 +100,7 @@ fun main(){
     //Instantation des potions
     val yop = Potion(
         nom = "Yop",
-        soin = 8,
+        soin = 20,
         description = "PREND MOI UN YOP!!! (ces dernieres paroles...)",
     )
 
@@ -111,101 +111,101 @@ fun main(){
     )
     val  jd = Potion(
         nom = "Jack-Daniel",
-        soin = 25,
-        description = "Avant l'effort...",
+        soin = 30,
+        description = "Produit par Studio Daniel",
     )
     //Instantation des Bombes
 
     val bomboclaat = Bombe(
         nom = "BOMBOCLAAAAAT",
-        nombreDeDes = 3,
-        maxDe = 10,
+        nombreDeDes = 4,
+        maxDe = 6,
         description = "Avant cette explosion, laisser moi vous parler de Nord VP~~~",
     )
 
     val creeper = Bombe(
         nom = "Creeper",
-        nombreDeDes=1,
-        maxDe = 50,
+        nombreDeDes=2,
+        maxDe = 8,
         description = "Ooh man~"
     )
 
     val petard = Bombe(
         nom = "Petard",
-        nombreDeDes = 1,
+        nombreDeDes = 2,
         maxDe = 5,
         description = "On va rendre justice à personne avec ces dégats -_-",
     )
 
     val petardDeGuerre = Bombe(
         nom = "Le Petard de Guerre",
-        nombreDeDes = 1,
-        maxDe = 70,
+        nombreDeDes = 5,
+        maxDe = 6,
         description = "JUSTICE POUR ADAMA VRAIMENT",
     )
 
     //Instantiation des monstres
-    val Slime = Personnage(
+    val Slime = Personnage( //Inspiré de Armure animée
         "Slipmane le slime",
-        pointDeVie = 10,
-        pointDeVieMax = 20,
-        attaque = 5,
-        defense = 4,
-        endurance = 6 ,
-        vitesse = 11 ,
+        pointDeVie = 33,
+        pointDeVieMax = 33,
+        attaque = 8,
+        defense = 15,
+        endurance = 8 ,
+        vitesse = 6 ,
         armePrincipal = null,
         armure = null,
         inventaire = mutableListOf()
     )
 
-    val djin = Personnage( //monstre de madame
+    val djin = Personnage( //monstre de madame,Inspiré de Élémentaire du feu
         "DjJnoun",
-        pointDeVie = 20,
-        pointDeVieMax = 216,
-        attaque = 200,
-        defense = 140,
-        endurance = 90 ,
-        vitesse =  110,
+        pointDeVie = 102,
+        pointDeVieMax = 102,
+        attaque = 12,
+        defense = 10,
+        endurance = 8 ,
+        vitesse =  16,
         armePrincipal = main,
         armure = null,
         inventaire = mutableListOf()
     )
 
 
-    val khouna = Personnage (
+    val khouna = Personnage ( //monstre de madame, Inspiré de Gelée ocre
         nom = "Roi~Khouna",
-        pointDeVie = 20,
-        pointDeVieMax = 216,
-        attaque = 200,
-        defense = 200,
-        endurance = 90,
+        pointDeVie = 45,
+        pointDeVieMax = 45,
+        attaque = 9,
+        defense = 14,
+        endurance = 7,
         vitesse = 10,
         armePrincipal = null,
         armure = null,
         inventaire = mutableListOf(),
     )
 
-    val Maman = Personnage(
+    val Maman = Personnage( //monstre de madame, Inspiré de Kraken
         nom = "khalti hasna",
-        pointDeVie = 20,
-        pointDeVieMax = 216,
-        attaque = 200,
-        defense = 200,
-        endurance =  90,
-        vitesse =  10000,
+        pointDeVie = 472,
+        pointDeVieMax = 472,
+        attaque = 18,
+        defense = 15,
+        endurance =  22,
+        vitesse =  14,
         armePrincipal = claquette,
         armure = Tong,
         inventaire = mutableListOf()
     )
 
-    val eggman = Personnage(
+    val eggman = Personnage( //Inspiré de Homme-lezard
         "Eggman",
-        pointDeVie = 180,
-        pointDeVieMax = 300,
-        attaque = 8,
-        defense = 5,
-        endurance = 50 ,
-        vitesse = 20,
+        pointDeVie = 22,
+        pointDeVieMax = 22,
+        attaque =11,
+        defense = 13,
+        endurance = 11 ,
+        vitesse = 11,
         armePrincipal = excalibruh,
         armure = null,
         inventaire = mutableListOf()

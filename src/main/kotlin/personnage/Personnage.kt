@@ -75,7 +75,7 @@ open class Personnage(
         return result;
      }
 
-     fun equipeArmure(armureA : Armure) {
+     open fun equipe(armureA : Armure) {
 
          if (armureA in this.inventaire && armureA is Armure)
              this.armure = armureA
@@ -83,7 +83,7 @@ open class Personnage(
 
 
      }
-     fun equipeArme(armeA: Arme){
+     open fun equipe(armeA: Arme){
         if (armeA in this.inventaire && armeA is Arme)
             this.armePrincipal = armeA
          println("$nom équipe ${armeA.nom}")
@@ -92,7 +92,7 @@ open class Personnage(
 
 
      // Méthode pour attaquer un adversaire
-     fun attaque(adversaire: Personnage) {
+     open fun attaque(adversaire: Personnage) {
          //TODO Mission 4.1
          if (armePrincipal != null) { //Si une arme est équipée, on additionne ses dégats aux dégats totaux.
              var degats = this.armePrincipal!!.calculerDegats()+(this.attaque / 2)

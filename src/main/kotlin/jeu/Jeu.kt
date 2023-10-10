@@ -1,6 +1,10 @@
 package jeu
 
 
+import item.Arme
+import personnage.Guerrier
+import personnage.Mage
+import personnage.Voleur
 import personnage.Personnage
 
 
@@ -68,6 +72,7 @@ class Jeu(monstres: List<Personnage>) {
         println("6. Terminé")
 
 
+
         choix = readln().toInt()
 
 
@@ -87,6 +92,9 @@ class Jeu(monstres: List<Personnage>) {
                             "Resaissisez le nombre de points à affecter pour l'attaque")
                     stats = readln().toInt()
                 }
+                if(attaque>0){
+                    pointsRestants+=attaque
+                }
                 attaque = stats
                 pointsRestants -= stats
                 println("Avez-vous terminer ? " +
@@ -104,6 +112,9 @@ class Jeu(monstres: List<Personnage>) {
                             "Resaissisez le nombre de points à affecter pour la défense:")
                     stats = readln().toInt()
                 }
+                if(defense>0){
+                    pointsRestants+=defense
+                }
                 defense += stats
                 pointsRestants -= stats
                 println("Avez-vous terminer ?" +
@@ -119,6 +130,9 @@ class Jeu(monstres: List<Personnage>) {
                     println("Vous avez saisi trop de points." +
                             "Resaissisez le nombre de points à affecter pour l'endurance:")
                     stats = readln().toInt()
+                }
+                if(endurance>0){
+                    pointsRestants+=endurance
                 }
                 endurance += stats
                 pointsRestants -= stats
@@ -137,6 +151,9 @@ class Jeu(monstres: List<Personnage>) {
                             "Resaissisez le nombre de points à affecter pour la vitesse:")
                     stats = readln().toInt()
                 }
+                if(vitesse>0){
+                    pointsRestants+=vitesse
+                }
                 vitesse += stats
                 pointsRestants -= stats
                 println("Avez-vous terminer ?" +
@@ -152,15 +169,31 @@ class Jeu(monstres: List<Personnage>) {
             }
             pointsRestants=40-(attaque+defense+vitesse+endurance)
 
-        } while (choix != 6 && pointsRestants  > 0 )
-
-
-        // Calculer les points de vie maximum en fonction de l'endurance
+        } while (choix in (1..5) || pointsRestants  <= 0 )       // Calculer les points de vie maximum en fonction de l'endurance
         val pointsDeVieMax =50+ endurance * 10
 
-        // Créer le personnage avec les valeurs saisies par l'utilisateur
-        val hero = Personnage(nom, pointsDeVieMax, pointsDeVieMax, attaque, defense, endurance, vitesse, armePrincipal = null, armure = null, inventaire = mutableListOf())
+        // Saisie de la classe
+        println("Choix de la classe, choisissez entre:")
+        println("1.Guerrier")
+        println("2.Voleur")
+        println("3.Mage")
+        var choixClasse = readln().toInt()
+        while (choixClasse !in 1..3){ // Resaisie de la classe si le nombre entré est en dehors de 1 2 et 3.
+            println("Choix de la classe, choisissez entre:")
+            println("1.Guerrier")
+            println("2.Voleur")
+            println("3.Mage")
+            var choixClasse = readln().toInt()
+        }
 
+        // Créer le personnage avec les valeurs saisies par l'utilisateur
+        var hero = Personnage(nom, pointsDeVieMax, pointsDeVieMax, attaque, defense, endurance, vitesse, armePrincipal = null, armure = null, inventaire = mutableListOf())
+        if (choixClasse == 1)
+            hero = Guerrier(nom, 3000, 3000, attaque, defense, endurance, vitesse, armePrincipal = null , armure = null, armeSecondaire = null)
+        else if (choixClasse == 2)
+            hero = Voleur (nom, 3000, 3000, attaque, defense, endurance, vitesse, armePrincipal = null , armure = null)
+        else if (choixClasse == 3)
+            hero = Mage (nom, 3000, 3000, attaque, defense, endurance, vitesse, armePrincipal = null , armure = null, grimmoire = mutableListOf(projectionAcide ,kamehameha ,tornadeDeFeu ,Soin , invocationArme, invocationArmure))
         // Valoriser l'attribut joueur avec le personnage créé et le retourner
         this.joueur = hero
         return hero
