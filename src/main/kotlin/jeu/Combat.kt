@@ -1,10 +1,9 @@
 package jeu
 
-import item.Arme
 import item.Bombe
-import item.Potion
+import personnage.Mage
 import personnage.Personnage
-import item.Item
+import personnage.Voleur
 
 class Combat(
     val jeu :Jeu,
@@ -57,6 +56,17 @@ class Combat(
                 }
 
 
+            }
+            5->{
+                "Voler"
+                val Voleur= this.jeu.joueur as Voleur
+                Voleur.volerItem(monstre)
+
+            }
+            6->{
+                "Lancer un sort"
+                val Mage= this.jeu.joueur as Mage
+                Mage.choisirEtLancerSort(monstre)
             }
             else -> "action invalide" //si une valeur ne fait pas parti des actions un message d'erreur sera affiché
 

@@ -4,12 +4,12 @@ package personnage
 import item.Arme
 import item.Armure
 import item.Item
-import jeu.Jeu
 import item.Sort
+import jeu.Jeu
 
 class Mage constructor(nom: String,
-                       val jeu : Jeu,
-                       val monstre: Personnage,
+//                       val jeu : Jeu,
+//                       val monstre: Personnage,
                        pointDeVie: Int,
                        pointDeVieMax: Int,
                        attaque: Int,
@@ -29,7 +29,7 @@ class Mage constructor(nom: String,
         }
     }
 
-    fun choisirEtLancerSort() {
+    fun choisirEtLancerSort(monstre: Personnage) {
         println(afficheGrimoire())
 
         println("saisir un sort : ")
@@ -39,19 +39,19 @@ class Mage constructor(nom: String,
             0 -> {
                 "boule de feu"
 
-                this.jeu.joueur.attaque(monstre)
+                this.jeu.joueur.attaque(this.monstre)
                 //lorsque la valeur est 0 l'action est attaquer
             }
 
             1 -> {
                 "caméa méa"
-                this.jeu.joueur.attaque(monstre)
+                this.jeu.joueur.attaque(this.monstre)
 
             }
 
             2 -> {
                 "pression spirituelle"
-                this.jeu.joueur.attaque(monstre)
+                this.jeu.joueur.attaque(this.monstre)
 
 
             }

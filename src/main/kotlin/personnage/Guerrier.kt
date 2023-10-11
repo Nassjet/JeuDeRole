@@ -27,7 +27,7 @@ class Guerrier constructor(nom: String,
 
         if (choix2 == 1) {
           super.equipe(armeA)
-        } else if (choix2 == 2) {
+        } else if (choix2 == 2 && armeA in this.inventaire && armeA is Arme) {
             this.armeSecondaire = armeA
         }
     }

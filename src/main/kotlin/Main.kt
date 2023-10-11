@@ -1,5 +1,6 @@
 import item.*
 import jeu.Jeu
+import jeu.TirageDes
 import personnage.Personnage
 
 //instanciation des qualités des objets
@@ -24,7 +25,45 @@ val typeExtraLegendaire= TypeArmure(nom= "Berbèrie", BonusType = 6)
 
 
 
-//instanciation des armes
+//instanciation des sorts d'attaque
+
+val projectionacide = Sort("Sort de projection acide",{caster, cible ->
+    run {
+        val tirageDes = TirageDes(1,10)
+            var degat = tirageDes.lance()
+            degat = maxOf(1,degat - cible.calculeDefense())
+            cible.pointDeVie -= degat
+            println("Le jet d'acide inflige $degat à ${cible.nom}")
+    }
+})
+
+val bouleFeu = Sort("boule de feu",{caster, cible ->
+    run {
+        val tirageDes = TirageDes(3,6)
+        var degat = tirageDes.lance()+caster.attaque/3
+
+        degat = maxOf(1,degat - cible.calculeDefense())
+        cible.pointDeVie -= degat
+        println("Le jet d'acide inflige $degat à ${cible.nom}")
+    }
+})
+
+val missileMagique = Sort("Missile magique",{caster, cible ->
+    run {
+        val tirageDes = TirageDes(1,6)
+        var compteur = 0
+            while (compteur < caster.attaque/2) {
+                var degat = tirageDes.lance()
+
+                degat = maxOf(1, degat - cible.calculeDefense())
+                cible.pointDeVie -= degat
+                println("Le jet d'acide inflige $degat à ${cible.nom}")
+                ++compteur
+            }
+
+    }
+})
+//instanciation des sorts soin
 
 
 fun main(){
