@@ -3,7 +3,12 @@ package item
 import jeu.TirageDes
 import personnage.Personnage
 
-class Bombe constructor(nom :String, var nombreDeDes : Int, var maxDe : Int,description : String):Item(nom,description) {
+class Bombe constructor(
+    nom: String,
+    var nombreDeDes: Int,
+    var maxDe: Int,
+    description: String) :
+    Item(nom, description) {
 
     override fun utiliser(cible: Personnage) {
         val des = TirageDes(nombreDeDes, maxDe)
@@ -17,7 +22,8 @@ class Bombe constructor(nom :String, var nombreDeDes : Int, var maxDe : Int,desc
         println("La bombe a fait $degatsApresProtection points de dégâts à la cible.")
     }
 
-
-
+    override fun toString(): String {
+        return "Bombe(${super.toString()}, nombreDeDes=$nombreDeDes)"
+    }
 }
 

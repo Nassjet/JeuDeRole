@@ -19,6 +19,16 @@ class Combat(
         println("\u001B[34m ---Tour de ${this.jeu.joueur.nom} (pv: ${this.jeu.joueur.pointDeVie}) ---")
 
         println("choissiez une action :")
+        println("0.Attaquer")
+        println("1.Passer")
+        println("2.Boire Potion")
+        println("3.Ouvrir inventaire")
+        if (this.jeu.joueur is Voleur)
+            println("4.Voler")
+        if (this.jeu.joueur is Mage)
+            println("5.Lancer un sort")
+
+
         val choix = readln().toInt() //saisir une valeur disponible
 
         when (choix) {
@@ -35,17 +45,16 @@ class Combat(
             }
             // ajoutez d'autres actions
 
-            3 ->{
+            2 ->{
                 "boire potion"
                 this.jeu.joueur.boirePotion()
 
             //l'action sera "boire une potion"
             }
-            4 ->{
+            3 ->{
                 "ouvrir inventaire"
 
                 this.jeu.joueur.afficherInventaire()
-                println("Selectionnez un item")
                 val selection:Int = readln().toInt()
                 val objet= this.jeu.joueur.inventaire[selection]
                 if (objet is Bombe){
@@ -57,16 +66,16 @@ class Combat(
 
 
             }
-            5->{
+            4->{
                 "Voler"
                 val Voleur= this.jeu.joueur as Voleur
                 Voleur.volerItem(monstre)
 
             }
-            6->{
+            5->{
                 "Lancer un sort"
                 val Mage= this.jeu.joueur as Mage
-                Mage.choisirEtLancerSort(monstre)
+                Mage.choisirEtLancerSort(this.jeu.joueur,this.monstre)
             }
             else -> "action invalide" //si une valeur ne fait pas parti des actions un message d'erreur sera affiché
 
@@ -125,6 +134,8 @@ class Combat(
             this.executerCombat()
         } else {
             println("BRAVO ! ${monstre.nom} a été vaincu !")
+            this.jeu.joueur.loot(this.monstre)
         }
+
     }
 }

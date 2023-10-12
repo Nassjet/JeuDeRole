@@ -4,17 +4,30 @@ import item.Arme
 import item.Armure
 import item.Item
 
-class Guerrier constructor(nom: String,
-                           pointDeVie: Int,
-                           pointDeVieMax: Int,
-                           attaque: Int,
-                           defense: Int,
-                           endurance: Int,
-                           vitesse: Int,
-                           armePrincipal: Arme?,
-                           var armeSecondaire: Arme?,
-                           armure: Armure?,
-                           inventaire: MutableList<Item> = mutableListOf(), ) :Personnage(nom, pointDeVie, pointDeVieMax, attaque, defense, endurance, vitesse, armePrincipal, armure, inventaire) {
+class Guerrier constructor(
+    nom: String,
+    pointDeVie: Int,
+    pointDeVieMax: Int,
+    attaque: Int,
+    defense: Int,
+    endurance: Int,
+    vitesse: Int,
+    armePrincipal: Arme?,
+    var armeSecondaire: Arme?,
+    armure: Armure?,
+    inventaire: MutableList<Item> = mutableListOf(),
+) : Personnage(
+    nom,
+    pointDeVie,
+    pointDeVieMax,
+    attaque,
+    defense,
+    endurance,
+    vitesse,
+    armePrincipal,
+    armure,
+    inventaire
+) {
 //    fun afficherarmes() {
 //
 //    }
@@ -26,8 +39,8 @@ class Guerrier constructor(nom: String,
         val choix2 = readln().toInt()
 
         if (choix2 == 1) {
-          super.equipe(armeA)
-        } else if (choix2 == 2 && armeA in this.inventaire && armeA is Arme) {
+            super.equipe(armeA)
+        } else if (choix2 == 2 && armeA in this.inventaire) {
             this.armeSecondaire = armeA
         }
     }
@@ -59,6 +72,9 @@ class Guerrier constructor(nom: String,
         }
 
     }
+//   override fun toString(): String {
+//       return "Guerrier(${super.toString()}, armeSecondaire =$armeSecondaire)"
+//   }
 
 
 }
