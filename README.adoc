@@ -1,0 +1,281 @@
+
+= Jeu De Rôle
+Belkacem Nassim; Gérance Lény; Ben Boubaker Sheinez
+:toc:
+:toclevels: 4
+
+== Projet 
+=== présentation
+
+Le jeu de rôle appelé KotlinAventure est un jeu d'aventure  qui plonge les joueurs dans un monde fantastique rempli de monstres redoutables, de personnages héroïques et de combats épiques !
+
+Le jeu se déroule dans un univers médiéval-fantastique où les joueurs incarnent un personnage.
+
+Voici un aperçu des classes de personnages disponibles :
+
+Guerrier : Les guerriers sont des combattants puissants armés. Ils sont connus pour
+leur force brute et leur capacité à infliger des dégâts élevés en combat.
+
+Voleur : Les voleurs excellent dans l'art de la discrétion et de la ruse. Ils sont
+capables de voler des objets précieux à leurs ennemis et de se faufiler dans les
+ombres pour échapper aux dangers.
+
+Mage : Les mages maîtrisent l'art de la magie et peuvent lancer des sorts
+dévastateurs. Ils ont un grimoire rempli de sorts variés, chacun ayant un effet unique
+sur les adversaires.
+
+=== objectif 
+Son objectif principal du jeu est de vaincre des monstres redoutables pour gagner des récompenses et améliorer l’équipement de votre personnage. Pour cela nous avons différentes missions à faire pour améliorer la base du jeu et la personnaliser. 
+
+=== fonctionnalités principales
+Le jeu comprendra les fonctionnalités suivantes :
+
+
+● Création de votre personnage : Les joueurs peuvent créer leurs personnages et ces caractéristiques ( attaque, défense, vitesse, endurance)
+
+● Combat en tour par tour : Les combats contre les monstres se déroulent en tours
+alternés où les joueurs peuvent choisir parmi différentes actions telles que l'attaque, l'utilisation de compétences spéciales, la consommation de potions, etc.
+
+● Inventaire : Les personnages peuvent collecter des objets tels que des armes, des potions, des armures, etc...
+
+● Personnalisation : Les joueurs peuvent personnaliser leurs personnages en équipant des armes et armures.
+
+
+=== organisations du groupe  
+
+Pour chacunes des missions, elles étaient divisiés en trois sous parties, c'est-à-dire une mission était "séparés" en trois parties que nous regroupons à chaque intermission. 
+Un trello a été mis en place pour avoir une vision claire et structuré sur la répartion des tâches et de l'organisation installé. 
+
+image:Capture.PNG[]
+
+.exemple avec la mission 1 
+====
+MISSION 1 : 
+
+- mission 1.1 : créationPerso()
+- mission 1.2 : tourDuJoueur()
+- mission 1.3 : tourDuMonstre()
+
+
+====
+
+
+Malgré ça nous avons garder l'esprit d'équipe et l'entraide entre nous, ce qui nous a permis d'avancer plus rapidement et efficacement. 
+
+
+
+== Sprint I : Gestion des Items 
+
+=== modifications des méthodes
+
+Chaque méthodes a été modifié avec des instructions bien précise donnés par la documentation du Sprint 1.
+
+
+.exemple d'un bout de code avec la méthode creerPersonnage() dans la classe Jeu (mision1.1 faites Belkacem Nassim)
+
+[source, kotlin]
+----
+ /**
+     *  Méthode pour créer le personnage du joueur en demandant les informations à l'utilisateur
+     *
+     */
+    fun creerPersonnage(): Personnage {
+        println("Création de votre personnage")
+
+        // Demander le nom du personnage à l'utilisateur
+        print("Entrez le nom de votre personnage: ")
+        val nom = readLine() ?: ""
+
+        var attaque = 0
+        var defense = 0
+        var endurance = 0
+        var vitesse = 0
+        var choix = 0
+        var stats = 0
+
+           // Demander à l'utilisateur de répartir 40 points entre attaque, défense, endurance et vitesse
+        var pointsRestants = 40
+
+        println("Vous avez 40 points à répartir entre l'attaque,la défense, la vitesse, l'endurance")
+        println("Saissisez le chiffre adéquat pour répartir les points là où vous le souhaitez.")
+        println("1. Attaque")
+        println("2. Défense")
+        println("3. Endurance")
+        println("4. Vitesse")
+        println("5. Ouvrir l'inventaire")
+        println("6. Terminé")
+
+        choix = readln().toInt()
+
+   
+    }
+----
+
+La diificultée principale de cette première mission est l'oublie du do While(), dans un bout de code il a été mis un simple while qui nous empêchait de ressortir de la boucle, dans certains cas le joueur ne pouvais y entrer et nous ne pouvions pas resaisir les valeurs. 
+
+le but du do while() est de faire rentrer le joueur au moins fois dans la boucle pour lancer l'attributions des points et le refaire saisir, ce qui n'est pas totalement le cas avec un simple while()
+
+[source, kotlin]
+----
+        do {
+            while (choix > 6) { // vérifie que l'utilisateur n'a pas saisi une valeure supérieure à 6 sinon il le refait saisir.
+                println(
+                    "Vous avez saisi un nombre trop grand." +
+                            "Saissisez le chiffre adéquat pour répartir les points là où vous le souhaitez."
+                )
+                choix = readln().toInt()
+            }
+
+            if (choix == 1) { //
+                println("stats:attaque")
+                stats = readln().toInt()
+                while (stats > pointsRestants) {
+                    println(
+                        "Vous avez saisi trop de points." +
+                                "Resaissisez le nombre de points à affecter pour l'attaque"
+                    )
+                    stats = readln().toInt()
+                }
+                if (attaque > 0) {
+                    pointsRestants += attaque
+                }
+                attaque = stats
+                pointsRestants -= stats
+                println(
+                    "Avez-vous terminer ? " +
+                            "Saissisez 6 si oui," +
+                            "sinon saissisez une valeur entre 1 et 5 pour continuer." +
+                            "Il vous reste $pointsRestants points"
+                )
+                choix = readln().toInt()
+            } else if (choix == 2) {
+                println("stats:défense")
+                stats = readln().toInt()
+                while (stats > pointsRestants) {
+                    println(
+                        "Vous avez saisi trop de points." +
+                                "Resaissisez le nombre de points à affecter pour la défense:"
+                    )
+                    stats = readln().toInt()
+                }
+                if (defense > 0) {
+                    pointsRestants += defense
+                }
+                defense += stats
+                pointsRestants -= stats
+                println(
+                    "Avez-vous terminer ?" +
+                            " Saissisez 6 si oui," +
+                            " sinon saissisez une valeur entre 1 et 5 pour continuer." +
+                            " Il vous reste $pointsRestants points"
+                )
+                choix = readln().toInt()
+            } else if (choix == 3) {
+                println("stats:Endurance")
+                stats = readln().toInt()
+                while (stats > pointsRestants) {
+                    println(
+                        "Vous avez saisi trop de points." +
+                                "Resaissisez le nombre de points à affecter pour l'endurance:"
+                    )
+                    stats = readln().toInt()
+                }
+                if (endurance > 0) {
+                    pointsRestants += endurance
+                }
+                endurance += stats
+                pointsRestants -= stats
+                println(
+                    "Avez-vous terminer ?" +
+                            " Saissisez 6 si oui," +
+                            " sinon saissisez une valeur entre 1 et 5 pour continuer." +
+                            " Il vous reste $pointsRestants points"
+                )
+                choix = readln().toInt()
+            } else if (choix == 4) {
+                println("stats:vitesse")
+                stats = readln().toInt()
+                while (stats > pointsRestants) {
+                    println(
+                        "Vous avez saisi trop de points." +
+                                "Resaissisez le nombre de points à affecter pour la vitesse:"
+                    )
+                    stats = readln().toInt()
+                }
+                if (vitesse > 0) {
+                    pointsRestants += vitesse
+                }
+                vitesse += stats
+                pointsRestants -= stats
+                println(
+                    "Avez-vous terminer ?" +
+                            "Saissisez 6 si oui," +
+                            "sinon saissisez une valeur entre 1 et 5 pour continuer." +
+                            "Il vous reste $pointsRestants points"
+                )
+                choix = readln().toInt()
+            } else if (choix == 5) {
+                println(
+                    "Votre inventaire est vide pour l'instant. " +
+                            "Saissisez une valeur entre 1 et 4 pour affecter des points sinon 6 pour Terminer "
+                )
+                choix = readln().toInt()
+            }
+            pointsRestants = 40 - (attaque + defense + vitesse + endurance)
+        } 
+----            
+
+Le while() permettait le disfonctionnement de notre jeu, pour le résoudre nous avons regarder le code de certains groupe et comprendre pourquoi le do while() était la solution, nous avons également soliciter l'aide des professeurs pour avoir une explication plus explicite. 
+
+
+=== intermission
+
+Pour les premières intermission,il s'agissait seulement de voir le fonctionnement, nous avons ajouté davantage de monstres à la liste de monstres du jeu, en en ajoutant au moins un pour chaque membre du groupe travaillant sur le projet. Créer des armes, armures, potions et bombes ainsi que les ajouter aux inventaires des monstres ou du joueur.
+NOUSavons également équiper des armes et des armures aux monstres, en affectant des valeurs aux attributs correspondants.
+
+
+
+
+
+=== test unitaire
+
+le test unitaire est là pour tester une partie unitaire du code, comme un morceau d'une méthode par exemple. ils doivent être rapides , indépendants et reproductibles
+Ils ne doivent donc pas faire d'appel à des ressources externes (base de données, système de fichiers, internet…). Ils doivent être isolés du reste de notre application et reproductibles dans n'importe quelles circonstances.
+
+Pour exemple, nous prennons la classe Armure et nous avons tester la méthode calculProtection()
+
+[source, kotlin]
+----
+@Test
+    fun calculProtection(): Int {
+        val protection = this.qualite.bonusQualite + this.type.BonusType // variable à potentiel changement
+        println(protection)
+        return protection
+    }
+
+----
+mais il faut d'abord importer :
+[source, kotlin]
+----
+import org.junit.Test
+import org.junit.Assert.assertEquals
+----
+ce qui corresponds à des importations de classes et de fonctions du framework de test JUnit. 
+
+Pour surmonter des difficultés pour chacun des test unitaires, il était important de concevoir le code de manière à être testable dès le départ, d'utiliser des pratiques de développement agile, de s'appuyer sur des principes de conception solides et d'utiliser des frameworks et outils de test approprié. La collaboration au sein de l'équipe de développement et la revue de code étaient également essentielles pour garantir que les tests sont appropriés et complets.
+
+
+
+=== héritages
+
+
+
+== Sprint II 
+=== création de classe à l'aide des diagrammes
+=== méthode toString()
+=== test unitaires
+
+== Conclusion  
+
+
+
