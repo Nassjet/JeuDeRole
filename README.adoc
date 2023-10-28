@@ -231,7 +231,7 @@ Le while() permettait le disfonctionnement de notre jeu, pour le résoudre nous 
 === intermission
 
 Pour les premières intermission,il s'agissait seulement de voir le fonctionnement, nous avons ajouté davantage de monstres à la liste de monstres du jeu, en en ajoutant au moins un pour chaque membre du groupe travaillant sur le projet. Créer des armes, armures, potions et bombes ainsi que les ajouter aux inventaires des monstres ou du joueur.
-NOUSavons également équiper des armes et des armures aux monstres, en affectant des valeurs aux attributs correspondants.
+Nous avons également équiper des armes et des armures aux monstres, en affectant des valeurs aux attributs correspondants.
 
 
 
