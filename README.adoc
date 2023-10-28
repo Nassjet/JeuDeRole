@@ -1,4 +1,4 @@
-
+ 
 = Jeu De Rôle
 :toc:
 :toclevels: 4
@@ -245,19 +245,20 @@ Pour exemple, nous prennons la classe Armure et nous avons tester la méthode ca
 
 [source, kotlin]
 ----
-@Test
-    fun calculProtection(): Int {
-        val protection = this.qualite.bonusQualite + this.type.BonusType // variable à potentiel changement
-        println(protection)
-        return protection
-    }
+class ArmureTest {
 
+    @Test
+    fun calculProtection () {
+        val armure1= Armure("","",typeBase, qualiteCommun)
+        var result= armure1.calculProtection()
+        Assertions.assertEquals(2, result)
+    }
 ----
 mais il faut d'abord importer :
 [source, kotlin]
 ----
 import org.junit.Test
-import org.junit.Assert.assertEquals
+import org.junit.jupiter.api.Assertions
 ----
 ce qui corresponds à des importations de classes et de fonctions du framework de test JUnit. 
 
@@ -276,9 +277,44 @@ Une classe utilisant l'héritage est une classe dérivée qui hérite des caract
 
 Voici un exemple avec la classe Mage et Sort 
 
+[source, kotlin]
+----
+package item
+
+import personnage.Personnage
+
+open class Sort(
+    val nom: String,
+    val effet: (Personnage, Personnage) -> Unit
+) {
+// ... 
+}
+----
+
+[source, kotlin]
+----
+class Mage( //on definit la class Sage pour l`utiliser comme classe dans jeu
+    nom: String,
+    pointDeVie: Int,
+    pointDeVieMax: Int,
+    attaque: Int,
+    defense: Int,
+    endurance: Int,
+    vitesse: Int,
+    armePrincipal: Arme?,
+    armure: Armure?,
+    inventaire: MutableList<Item> = mutableListOf(),
+    private val grimmoire:MutableList<Sort> = mutableListOf() ) :Personnage(nom, pointDeVie, pointDeVieMax, attaque, defense, endurance, vitesse, armePrincipal, armure, inventaire) {
+
+//...
+}
+----
+Ainsi, les classes Mage et Sort utilisent l'héritage pour hériter des propriétés et méthodes de la classe Personnage, tout en ajoutant leurs propres fonctionnalités uniques. Cela démontre comment l'héritage permet de créer des relations de classe et de réutiliser le code de manière efficace.
 
 
 === méthode toString()
+
+
 === test unitaires
 
 == Conclusion  
