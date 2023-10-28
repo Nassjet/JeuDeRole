@@ -1,10 +1,11 @@
 
 = Jeu De Rôle
-Belkacem Nassim; Gérance Lény; Ben Boubaker Sheinez
 :toc:
 :toclevels: 4
 
 == Projet 
+projet réaliser par Belkacem Nassim, Gérance Lény et Ben Boubaker Sheinez
+
 === présentation
 
 Le jeu de rôle appelé KotlinAventure est un jeu d'aventure  qui plonge les joueurs dans un monde fantastique rempli de monstres redoutables, de personnages héroïques et de combats épiques !
@@ -55,8 +56,6 @@ MISSION 1 :
 - mission 1.1 : créationPerso()
 - mission 1.2 : tourDuJoueur()
 - mission 1.3 : tourDuMonstre()
-
-
 ====
 
 
