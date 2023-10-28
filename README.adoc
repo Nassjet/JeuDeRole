@@ -265,12 +265,13 @@ Pour surmonter des difficultés pour chacun des test unitaires, il était import
 
 
 
-=== héritages
-
-
-
 == Sprint II 
 === création de classe à l'aide des diagrammes
+
+
+
+
+
 === méthode toString()
 === test unitaires
 
