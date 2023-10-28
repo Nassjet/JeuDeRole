@@ -268,7 +268,13 @@ Pour surmonter des difficultés pour chacun des test unitaires, il était import
 == Sprint II 
 === création de classe à l'aide des diagrammes
 
+image:Capture2.PNG[]
 
+L'héritage est un concept fondamental de la programmation orientée objet (POO) qui permet à une classe de prendre en charge les propriétés (champs) et les comportements (méthodes) d'une autre classe, appelée la classe parente ou la classe de base. L'héritage permet la réutilisation du code, la création de hiérarchies de classes et la définition de relations entre les classes.
+
+Une classe utilisant l'héritage est une classe dérivée qui hérite des caractéristiques (propriétés et méthodes) de sa classe parente. La classe dérivée peut ajouter des fonctionnalités supplémentaires ou modifier le comportement hérité de la classe parente. Les classes dérivées sont également appelées sous-classes, tandis que les classes parentes sont appelées superclasses.
+
+Voici un exemple avec la classe Mage et Sort 
 
 
 
