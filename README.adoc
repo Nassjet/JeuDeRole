@@ -242,7 +242,7 @@ le test unitaire est là pour tester une partie unitaire du code, comme un morce
 Ils ne doivent donc pas faire d'appel à des ressources externes (base de données, système de fichiers, internet…). Ils doivent être isolés du reste de notre application et reproductibles dans n'importe quelles circonstances.
 Pour faire un test unitaire, nous devons au préalable déterminer par nos propres moyens (calcul papier par exemple) le résultat que la méthode est censé nous renvoyer. Si on tombe sur le bon résultat le test est validé, si non alors il y a un problème à résoudre (cependant il est possible qu'on se soit trompé dans le calcul fait au préalable).
 
-Pour exemple, nous prennons la classe Armure et nous avons tester la méthode calculProtection()
+Pour exemple, nous prennons la classe Armure et nous avons tester la méthode calculProtection() (mission 3.2 faite par Sheinez Ben Boubaker) 
 
 [source, kotlin]
 ----
@@ -265,6 +265,13 @@ ce qui corresponds à des importations de classes et de fonctions du framework d
 
 Pour surmonter des difficultés pour chacun des test unitaires, il était important de concevoir le code de manière à être testable dès le départ, d'utiliser des pratiques de développement agile, de s'appuyer sur des principes de conception solides et d'utiliser des frameworks et outils de test approprié. La collaboration au sein de l'équipe de développement et la revue de code étaient également essentielles pour garantir que les tests sont appropriés et complets.
 
+L'assertion suivante: 
+[source, kotlin]
+----
+Assertions.assertEquals(2, result)
+----
+vérifie si resultat test égale à 2. Cela signifie que le test réussira uniquement si la méthode calculProtection() renvoie exactement 2. Si la valeur de retour de cette méthode doit être calculée en fonction d'une logique plus complexe, cette assertion pourrait ne pas être corriger. Nous devons donc nous assurer que l'assertion correspond à la logique attendue de la méthode calculProtection().
+Pour résoudre les problèmes, nous devons corriger l'initialisation de l'objet Armure en utilisant les valeurs appropriées, nous assurer que les importations sont correctes, et nous assurer que les assertions reprennent la logique de notre application et du test. De plus, il est important d'utiliser des données de test significatives pour tester différentes conditions du code.
 
 
 == Sprint II 
