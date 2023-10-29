@@ -226,6 +226,47 @@ le but du do while() est de faire rentrer le joueur au moins fois dans la boucle
 
 Le while() provoquait le disfonctionnement de notre jeu, pour le résoudre nous avons regarder le code de certains groupe et comprendre pourquoi le do while() était la solution, nous avons également soliciter l'aide des professeurs pour avoir une explication plus explicite. 
 
+=== réalisations des classes 
+
+lors de la création de la classe Arme et TypeArme, nous avons eu des difficultés à trouver pour réaliser la méthode calculerDegats() 
+
+image:Capture3.PNG[]
+
+mission 2.1
+[source, kotlin]
+----
+ fun calculerDegats(): Int {
+
+        var degats = 0
+        val deDegats = TirageDes(
+            this.type.nombreDes,
+            this.type.valeurDeMax
+        )         //Initialisation du dé à utiliser pour les dégats
+        val resultatDegats =
+            deDegats.lance()           // Utilisation de la méthode lance() pour obtenir le résultat du lancé DEGATS
+        val deCritique =
+            TirageDes(1, 20)      //Initialisation du dé à utiliser pour savoir si c'est un coup critique ou pas
+        val resultatCritique =
+            deCritique.lance()       // Utilisation de la méthode lance() pour obtenir le résultat du lancé CRITIQUE
+
+        degats = resultatDegats
+
+
+        if (resultatCritique > this.type.activationCritique) {
+            degats = degats * 2
+        }
+
+        return degats
+    }
+----
+La méthode effectue un lancer de dé à 20 faces pour déterminer si le coup est critique. La gestion des probabilités a été complexe, et il a fallut s'assurer que la logique de détermination des coups critiques soit correcte.
+
+La méthode doit multiplier les dégâts par un multiplicateurCritiques i le coup est critique. Cette logique doit être correcte et cohérente avec les spécifications du jeu. Des erreurs dans cette logique peuvent entraîner des problèmes d’équilibre du jeu.
+
+Pour surmonter ces difficultés, nous avons assurer de comprendre en détail les spécifications du jeu, le professeur nous a également aidé avec un exemple concret d'un jeu d'algoritme connu, d'effectuer des tests rigoureux (mission 3), documenter notre code de manière appropriée et s'assurer que toutes les classes et attributs nécessaires sont correctement implémentés. Une approche itérative avec des tests fréquents est généralement recommandée pour garantir la fiabilité de la méthode calculerDegats(); cela nous a donc permis de passer aux missions suivantes. 
+
+
+
 
 === intermission
 
