@@ -32,7 +32,7 @@ Son objectif principal du jeu est de vaincre des monstres redoutables pour gagne
 Le jeu comprendra les fonctionnalités suivantes :
 
 
-● Création de votre personnage : Les joueurs peuvent créer leurs personnages et ces caractéristiques ( attaque, défense, vitesse, endurance)
+● Création de votre personnage : Les joueurs peuvent créer leurs personnages et ses caractéristiques ( attaque, défense, vitesse, endurance)
 
 ● Combat en tour par tour : Les combats contre les monstres se déroulent en tours
 alternés où les joueurs peuvent choisir parmi différentes actions telles que l'attaque, l'utilisation de compétences spéciales, la consommation de potions, etc.
