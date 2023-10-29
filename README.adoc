@@ -240,6 +240,7 @@ Nous avons également équiper des armes et des armures aux monstres, en affecta
 
 le test unitaire est là pour tester une partie unitaire du code, comme un morceau d'une méthode par exemple. ils doivent être rapides , indépendants et reproductibles
 Ils ne doivent donc pas faire d'appel à des ressources externes (base de données, système de fichiers, internet…). Ils doivent être isolés du reste de notre application et reproductibles dans n'importe quelles circonstances.
+Pour faire un test unitaire, nous devons au préalable déterminer par nos propres moyens (calcul papier par exemple) le résultat que la méthode est censé nous renvoyer. Si on tombe sur le bon résultat le test est validé, si non alors il y a un problème à résoudre (cependant il est possible qu'on se soit trompé dans le calcul fait au préalable).
 
 Pour exemple, nous prennons la classe Armure et nous avons tester la méthode calculProtection()
 
