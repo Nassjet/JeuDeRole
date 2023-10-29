@@ -324,7 +324,7 @@ L'héritage est un concept fondamental de la programmation orientée objet (POO)
 
 Une classe utilisant l'héritage est une classe dérivée qui hérite des caractéristiques (propriétés et méthodes) de sa classe parente. La classe dérivée peut ajouter des fonctionnalités supplémentaires ou modifier le comportement hérité de la classe parente. Les classes dérivées sont également appelées sous-classes, tandis que les classes parentes sont appelées superclasses.
 
-Voici un exemple avec la classe Mage et Sort 
+Voici un exemple avec la classe Mage et Sort (mission 7.3 faite par Lény Gérance)
 
 [source, kotlin]
 ----
@@ -363,8 +363,22 @@ Ainsi, les classes Mage et Sort utilisent l'héritage pour hériter des proprié
 
 === méthode toString()
 
+la méthode toString() est une méthode qui permet de convertir un objet en chaîne de caractères. Elle est appelée automatiquement lorsque l'on utilise println() avec un objet ou lorsque l'on concatène l'objet avec une chaîne de caractères, elle eut être substituée (override) dans les classes personnalisées pour fournir une chaîne de caractères descriptifs de l'objet. En Kotlin, cette méthode est également héritée de la classe Any et peut être redéfinie dans les classes.
 
-=== test unitaires
+cette méthode est importante pour plusieurs raisons :
+
+- Facilite le déblogage : En cas de problèmes dans le programme, nous pouvons utiliser la méthode toString() pour obtenir une description lisible de l'objet en question. Cela nous aide à identifier et à résoudre plus facilement les erreurs.
+
+- Améliorer la lisibilité du code : En utilisant la méthode toString() pour obtenir une représentation textuelle de l'objet, nous pouvons rendre le code plus lisible. Par exemple, lors de l'impression de l'objet, nous obtiendrons une sortie plus significative qu'une adresse mémoire ou une référence.
+
+- Facilite la journalisation (logging) : Lorsque nous voulons enregistrer des informations dans les fichiers journaux, il est intéresssant d'utiliser la méthode toString() pour obtenir une version textuelle des objets que vous souhaitez enregistrer. exemple avec afficherGrimoire() 
+
+[source, kotlin]
+----
+ override fun toString(): String {
+        return "Mage(${super.toString()}, grimmoire=$grimmoire)"
+    }
+----
 
 == Conclusion  
 
