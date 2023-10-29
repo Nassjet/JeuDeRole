@@ -342,7 +342,7 @@ open class Sort(
 
 [source, kotlin]
 ----
-class Mage( //on definit la class Sage pour l`utiliser comme classe dans jeu
+class Mage( //on definit la class Mage pour l`utiliser comme classe dans jeu
     nom: String,
     pointDeVie: Int,
     pointDeVieMax: Int,
