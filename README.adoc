@@ -224,7 +224,7 @@ le but du do while() est de faire rentrer le joueur au moins fois dans la boucle
         } 
 ----            
 
-Le while() permettait le disfonctionnement de notre jeu, pour le résoudre nous avons regarder le code de certains groupe et comprendre pourquoi le do while() était la solution, nous avons également soliciter l'aide des professeurs pour avoir une explication plus explicite. 
+Le while() provoquait le disfonctionnement de notre jeu, pour le résoudre nous avons regarder le code de certains groupe et comprendre pourquoi le do while() était la solution, nous avons également soliciter l'aide des professeurs pour avoir une explication plus explicite. 
 
 
 === intermission
