@@ -440,5 +440,13 @@ cette méthode est importante pour plusieurs raisons :
 
 == Conclusion  
 
+Pour en conclure, le compte rendu de ce jeu de rôle se concentre principalement sur les difficultés rencontrées et expose leurs solutions. Au cours de notre sprint I, nous avons géré les éléments du jeu, créé des classes, effectué des modifications de méthodes et mis en place des tests unitaires pour garantir le bon fonctionnement du code. Dans le sprint II, nous avons utilisé l'héritage pour créer des classes à l'aide de diagrammes, ce qui nous a permis de structurer notre code de manière plus efficace. 
+
+
+En fin de compte, ce projet nous a permis d'acquérir de précieuses compétences en programmation orientée objet, en gestion de projet et en travail d'équipe. Nous avons surmonté divers défis, de la gestion des probabilités dans les combats à la création de classes et à la réalisation de tests unitaires.
+
+Nous sommes fiers du travail accompli et espérons que KotlinAventure offrira une expérience de jeu immersive aux joueurs qui se lanceront dans cette aventure fantastique. Ce projet nous a également permis de renforcer notre collaboration en équipe et d'acquérir une expérience précieuse dans le développement de jeux de rôle.
+
+En fin de compte, KotlinAventure est le résultat de notre passion pour la programmation et de notre désir de créer un monde fantastique où l'imagination prend vie. Nous espérons que les joueurs apprécieront leur voyage à travers ce monde et les défis qui les attendent.
 
 
